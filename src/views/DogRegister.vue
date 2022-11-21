@@ -3,34 +3,35 @@
     <h1>Cadastro de cachorro:</h1>
     <form id="dog-form" method="POST" @submit="registerDog" enctype="multipart/form-data">
         <div class="input-container">
-        <label for="name">Nome do cachorro:</label>
-        <input type="text" id="name" name="name" v-model="name" placeholder="Digite o nome do seu cachorro">
+          <label for="name">Nome do cachorro:</label>
+          <input type="text" id="name" name="name" v-model="name" placeholder="Digite o nome do seu cachorro">
         </div>
 
         <div class="input-container">
-        <label for="breed">Raça do cachorro:</label>
-        <input type="text" id="breed" name="breed" v-model="breed" placeholder="Digite a raça do seu cachorro">
+          <label for="breed">Raça do cachorro:</label>
+          <input type="text" id="breed" name="breed" v-model="breed" placeholder="Digite a raça do seu cachorro">
         </div>
 
         <div class="input-container">
-        <label for="gender">Sexo do cachorro:</label>
-        <select name="gender" id="gender" v-model="gender">
-            <option value="M">Masculino</option>
-            <option value="F">Feminino</option>
-        </select>
+          <label for="gender">Sexo do cachorro:</label>
+          <select name="gender" id="gender" v-model="gender">
+              <option value="M">Masculino</option>
+              <option value="F">Feminino</option>
+          </select>
         </div>
 
         <div class="input-container">
-        <label for="img_path">Foto do cachorro (opcional):</label>
-        <input type="file" id="img_path" name="img_path" accept="image/*png,jpg,jpeg" placeholder="Digite a raça do seu cachorro" @change="newFile">
+          <label for="img_path">Foto do cachorro (opcional):</label>
+          <input type="file" id="img_path" name="img_path" accept="image/*png,jpg,jpeg" placeholder="Digite a raça do seu cachorro" @change="newFile">
         </div>
 
         <div class="checkbox-container">
-        <label id="public-title" for="public">Público? <i class="fa fa-question-circle tips" aria-hidden="true" title="Sendo público, o seu cachorro irá aparecer na página inicial do site para todo mundo ver."></i></label>
-        <input type="checkbox" name="public" v-model="is_public">
+          <label id="public-title" for="public">Público? <i class="fa fa-question-circle tips" aria-hidden="true" title="Sendo público, o seu cachorro irá aparecer na página inicial do site para todo mundo ver."></i></label>
+          <input type="checkbox" name="public" v-model="is_public">
         </div>
+
         <div class="input-container">
-        <input class="submit-btn" type="submit" value="Register seu cachorro!">
+          <input class="submit-btn" type="submit" value="Register seu cachorro!">
         </div>
     </form>
   </div>

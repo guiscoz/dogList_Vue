@@ -4,7 +4,9 @@
             <img src="@/assets/dogList_logo.png" alt="doglist-logo">
         </a>
         <a href="/">Lista de cachorros</a>
-        <a href="/dog-register">Cadastrar cachorros</a>
+        <a href="/cadastro-cachorro">Cadastrar cachorros</a>
+        <a href="/login">Login</a>
+        <a href="/cadastro-usuario">Cadastrar usuário</a>
     </nav>
 </template>
 
