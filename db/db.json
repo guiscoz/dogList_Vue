@@ -1,0 +1,76 @@
+{
+  "dogs": [
+    {
+      "id": 1,
+      "name": "Iggy",
+      "breed": "Boston Terrier",
+      "gender": "M",
+      "img_path": "assets/imgs/dogs/Iggy.png",
+      "is_public": true
+    },
+    {
+      "id": 2,
+      "name": "Caramelo",
+      "breed": "Vira Lata Caramelo",
+      "gender": "M",
+      "img_path": "assets/imgs/dogs/Caramelo.jpg",
+      "is_public": true
+    },
+    {
+      "id": 3,
+      "name": "Astrogildo",
+      "breed": "Labrador",
+      "gender": "M",
+      "img_path": "assets/imgs/dogs/Astrogildo.jpg",
+      "is_public": false
+    },
+    {
+      "id": 4,
+      "name": "Chica",
+      "breed": "Pit Bull",
+      "gender": "F",
+      "img_path": null,
+      "is_public": true
+    },
+    {
+      "name": "Dio Brando",
+      "breed": "Rot Vale",
+      "gender": "M",
+      "is_public": true,
+      "img_path": null,
+      "id": 5
+    },
+    {
+      "name": "Holly",
+      "breed": "Pudou",
+      "gender": "F",
+      "is_public": true,
+      "img_path": null,
+      "id": 6
+    },
+    {
+      "name": "Paralelepipedo",
+      "breed": "Pinscher",
+      "gender": "M",
+      "is_public": null,
+      "img_path": null,
+      "id": 7
+    },
+    {
+      "name": "Jotaro Kujo",
+      "breed": "Doberman",
+      "gender": "M",
+      "is_public": true,
+      "img_path": null,
+      "id": 8
+    },
+    {
+      "name": "Holly",
+      "breed": "Pudou",
+      "gender": "F",
+      "is_public": null,
+      "img_path": "assets/imgs/dogs/Astrogildo.jpg",
+      "id": 9
+    }
+  ]
+}
