@@ -1,6 +1,8 @@
 <template>
     <nav>
-        <img src="@/assets/dogList_logo.png" alt="doglist-logo">
+        <a id="logo" href="/">
+            <img src="@/assets/dogList_logo.png" alt="doglist-logo">
+        </a>
         <a href="/">Lista de cachorros</a>
         <a href="/dog-register">Cadastrar cachorros</a>
     </nav>
@@ -19,6 +21,7 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        border-bottom: 2px solid #333;
     }
 
     nav a {
@@ -36,7 +39,7 @@
         color: greenyellow;
     }
 
-    nav img {
+    #logo {
         margin: auto;
         margin-left: 0;
     }
