@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div id="dog-table" >
-      <h1>Cães cadastrados</h1>
+      <h1>Cachorros da galera</h1>
       <div id="dog-table-rows" v-if="dogs">
         <div class="dog-table-row" v-for="dog in dogs" :key="dog.id" >
           <div class="dog-table-column">

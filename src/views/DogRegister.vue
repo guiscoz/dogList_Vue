@@ -65,7 +65,7 @@ export default {
 
       console.log(dogData)
       // link do backend do Vue: http://localhost:3000/dogs
-      axios.post('http://127.0.0.1:8000/api/dog_list/store', dogData, {
+      await axios.post('http://127.0.0.1:8000/api/dog_list/store', dogData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

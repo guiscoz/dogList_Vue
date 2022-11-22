@@ -39,7 +39,12 @@
 
                 axios.post('http://127.0.0.1:8000/api/login', loginData)
                 .then(response => {
-                    console.log(response.data)
+                    let token = response.data.token
+                    let date = new Date()
+                    let expires = date.setDate(date.getDate() + 1)
+
+                    document.cookie = `user_token=${token};expires=${expires}`
+                    this.$router.push('/perfil')
                 })
                 .catch((error) => {
                     console.log(error)

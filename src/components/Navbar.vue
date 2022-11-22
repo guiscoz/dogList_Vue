@@ -3,17 +3,65 @@
         <a id="logo" href="/">
             <img src="@/assets/dogList_logo.png" alt="doglist-logo">
         </a>
-        <a href="/">Lista de cachorros</a>
-        <a href="/cadastro-cachorro">Cadastrar cachorros</a>
-        <a href="/login">Login</a>
-        <a href="/cadastro-usuario">Cadastrar usuário</a>
+
+        <div v-if="logged">
+            <a href="/perfil">Perfil</a>
+            <a href="/cadastro-cachorro">Adicionar cachorro</a>
+            <button id="logout-button" @click="Logout">Logout</button>
+        </div>
+        <div v-else>
+            <a href="/login">Login</a>
+            <a href="/cadastro-usuario">Cadastrar</a>
+        </div>
     </nav>
 </template>
 
 <script>
+    import axios from 'axios'
+    let token = document.cookie.split('=')[1]
+
     export default {
         /* eslint-disable */
-        name: 'Navbar'
+        name: 'Navbar',
+        data() {
+            return {
+                logged: false
+            }
+        },
+        methods: {
+            async Logout(e) {
+                await axios.get('http://127.0.0.1:8000/api/logout', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+                })
+                .then(response => {
+                    document.cookie = `${document.cookie};max-age=0`
+                    console.log('cookie deletado')
+                    this.logged = false
+                    this.$router.push('/')
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+            },
+            CheckLogin() {
+                if (document.cookie.indexOf('user_token') == -1) {
+                    this.logged = false
+                } else {
+                    token = document.cookie.split('=')[1]
+                    this.logged = true
+                }
+            }
+        },
+        mounted() {
+            this.CheckLogin()
+        },
+        watch: {
+            $route(to, from) {
+                this.CheckLogin()
+            }
+        }
     }
 </script>
 

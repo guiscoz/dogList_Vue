@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-
+import Guard from '../services/middleware';
 
 const routes = [
   {
@@ -22,6 +22,12 @@ const routes = [
     path: '/cadastro-usuario',
     name: 'register',
     component: () => import(/* webpackChunkName: "about" */ '../views/Register.vue')
+  },
+  {
+    path: '/perfil',
+    name: 'profile',
+    beforeEnter: Guard.auth,
+    component: () => import(/* webpackChunkName: "about" */ '../views/Profile.vue'),
   }
 ]
 
