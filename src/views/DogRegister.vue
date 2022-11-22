@@ -39,6 +39,7 @@
 
 <script>
 import axios from 'axios'
+const token = document.cookie.split('=')[1]
 
 export default {
   name: "DogRegister",
@@ -68,6 +69,8 @@ export default {
       await axios.post('http://127.0.0.1:8000/api/dog_list/store', dogData, {
         headers: {
           "Content-Type": "multipart/form-data",
+          'Authorization': `Bearer ${token}`,
+          'Access-Control-Allow-Origin': '*'
         },
       })
       .catch((error) => {
