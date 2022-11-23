@@ -18,6 +18,7 @@
 
 <script>
     import axios from 'axios'
+    import api from '@/services/api'
     let token = document.cookie.split('=')[1]
 
     export default {
@@ -30,14 +31,13 @@
         },
         methods: {
             async Logout(e) {
-                await axios.get('http://127.0.0.1:8000/api/logout', {
+                await axios.get(`${api}/logout`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
                 })
                 .then(response => {
                     document.cookie = `${document.cookie};max-age=0`
-                    console.log('cookie deletado')
                     this.logged = false
                     this.$router.push('/')
                 })

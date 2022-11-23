@@ -6,6 +6,7 @@
 
 <script>
     import axios from 'axios'
+    import api from '@/services/api'
     const token = document.cookie.split('=')[1]
 
     export default {
@@ -19,15 +20,15 @@
         },
         methods: {
             async UserData() {
-                await axios.get(`http://127.0.0.1:8000/api/get_user`, {
+                await axios.get(`${api}/get_user`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
                 })
                 .then(response => {
-                    console.log(response)
                     this.name = response.data.name
                     this.id = response.data.id
+                    console.log(response)
                 })
                 .catch((error) => {
                     console.log(error)

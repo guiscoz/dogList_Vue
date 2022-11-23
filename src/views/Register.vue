@@ -23,6 +23,7 @@
 
 <script>
     import axios from 'axios'
+    import api from '@/services/api'
 
     export default {
         /* eslint-disable */
@@ -44,7 +45,7 @@
                     password: this.password
                 }
 
-                axios.post('http://127.0.0.1:8000/api/register', RegisterData)
+                axios.post(`${api}/register`, RegisterData)
                 .then(response => {
                     let token = response.data.token
                     let date = new Date()

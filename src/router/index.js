@@ -11,6 +11,7 @@ const routes = [
   {
     path: '/cadastro-cachorro',
     name: 'dog-register',
+    beforeEnter: Guard.auth,
     component: () => import(/* webpackChunkName: "about" */ '../views/DogRegister.vue')
   },
   {

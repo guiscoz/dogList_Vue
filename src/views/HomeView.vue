@@ -23,20 +23,20 @@
 
 <script>
 import axios from 'axios'
+import api from '@/services/api'
 
 export default {
   /* eslint-disable */
   name: 'HomeView',
   data() {
     return {
-      dogs: null,
-      dog_id: null
+      dogs: null
     }
   },
   methods: {
     async getDogs() {
       // link do backend do Vue: http://localhost:3000/dogs
-      await axios.get('http://127.0.0.1:8000/api/dog_list', {})
+      await axios.get(`${api}/dog_list`, {})
       .then(response => {this.dogs = response.data.data})
       .catch(error => {console.log(error)})
     }

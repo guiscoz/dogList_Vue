@@ -39,6 +39,7 @@
 
 <script>
 import axios from 'axios'
+import api from '@/services/api'
 const token = document.cookie.split('=')[1]
 
 export default {
@@ -66,11 +67,10 @@ export default {
 
       console.log(dogData)
       // link do backend do Vue: http://localhost:3000/dogs
-      await axios.post('http://127.0.0.1:8000/api/dog_list/store', dogData, {
+      await axios.post(`${api}/dog_list/store`, dogData, {
         headers: {
           "Content-Type": "multipart/form-data",
-          'Authorization': `Bearer ${token}`,
-          'Access-Control-Allow-Origin': '*'
+          'Authorization': `Bearer ${token}`
         },
       })
       .catch((error) => {
