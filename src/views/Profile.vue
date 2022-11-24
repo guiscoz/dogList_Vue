@@ -14,6 +14,11 @@
               <p><b>Nome:</b> {{dog.name}}</p>
               <p><b>Raça:</b> {{dog.breed}}</p>
               <p><b>Sexo:</b> {{dog.gender == "M" ? "Masculino" : "Feminino"}}</p>
+              <p><b style="font-size: 18px">{{dog.is_public == "1" ? "Público" : "Visível apenas no seu perfil"}}</b></p>
+              <div id="actions" style="display: flex; justify-content: space-between">
+                  <button>Editar</button>
+                  <button @click="DeleteDog(dog.id)">Excluir</button>
+              </div>
             </div>
           </div>
         </div>
@@ -48,6 +53,20 @@
                     this.name = response.data.user.name
                     this.id = response.data.user.id
                     this.dogs = response.data.dogs.data
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+            },
+            async DeleteDog(id) {
+                await axios.delete(`${api}/dog_list/delete/${id}`, {
+                    headers: {
+                    'Authorization': `Bearer ${token}`
+                    },
+                })
+                .then(() => {
+                    alert('Remoção feita com sucesso')
+                    window.location.reload();
                 })
                 .catch((error) => {
                     console.log(error)
