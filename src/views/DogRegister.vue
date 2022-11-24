@@ -65,7 +65,6 @@ export default {
         img_path: this.img_path
       }
 
-      console.log(dogData)
       // link do backend do Vue: http://localhost:3000/dogs
       await axios.post(`${api}/dog_list/store`, dogData, {
         headers: {
