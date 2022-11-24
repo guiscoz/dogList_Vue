@@ -9,12 +9,6 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/cadastro-cachorro',
-    name: 'dog-register',
-    beforeEnter: Guard.auth,
-    component: () => import(/* webpackChunkName: "about" */ '../views/DogRegister.vue')
-  },
-  {
     path: '/login',
     name: 'login',
     component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
@@ -29,6 +23,18 @@ const routes = [
     name: 'profile',
     beforeEnter: Guard.auth,
     component: () => import(/* webpackChunkName: "about" */ '../views/Profile.vue'),
+  },
+  {
+    path: '/cadastro-cachorro',
+    name: 'dog-register',
+    beforeEnter: Guard.auth,
+    component: () => import(/* webpackChunkName: "about" */ '../views/DogRegister.vue')
+  },
+  {
+    path: '/editar-cachorro/:id',
+    name: 'dog-edit',
+    beforeEnter: Guard.auth,
+    component: () => import(/* webpackChunkName: "about" */ '../views/DogEdition.vue')
   }
 ]
 

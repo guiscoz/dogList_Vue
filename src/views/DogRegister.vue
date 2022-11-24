@@ -22,7 +22,7 @@
 
         <div class="input-container">
           <label for="img_path">Foto do cachorro (opcional):</label>
-          <input type="file" id="img_path" name="img_path" accept="image/*png,jpg,jpeg" placeholder="Digite a raça do seu cachorro" @change="newFile">
+          <input type="file" id="img_path" name="img_path" accept="image/*png,jpg,jpeg" placeholder="Escolha um arquivo de foto" @change="newFile">
         </div>
 
         <div class="checkbox-container">
@@ -31,7 +31,7 @@
         </div>
 
         <div class="input-container">
-          <input class="submit-btn" type="submit" value="Register seu cachorro!">
+          <input class="submit-btn" type="submit" value="Registre seu cachorro!">
         </div>
     </form>
   </div>
