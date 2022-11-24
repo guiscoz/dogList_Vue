@@ -72,9 +72,14 @@ export default {
           'Authorization': `Bearer ${token}`
         },
       })
+      .then(() => {
+        alert('Cadastro feito com sucesso')
+        window.location.reload();
+      })
       .catch((error) => {
           console.log(error)
       })
+
     },
 
     newFile(event) {
