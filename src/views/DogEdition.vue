@@ -2,11 +2,12 @@
     <div class="dog-edit">
         <h1>Edição de cachorro:</h1>
         <div id="image-column">
-            <img v-if="this.img_path" :src="`http://127.0.0.1:8000/storage/${this.img_path}`" :alt="name" id="dog-picture">
+            <img v-if="this.current_img" :src="`http://127.0.0.1:8000/storage/${this.current_img}`" :alt="name" id="dog-picture">
             <img v-else src="@/assets/imgs/noImage.jpg" :alt="name" class="dog-picture">
         </div>
         <div id="edit_column">
             <form id="dog-form" method="PUT" @submit="EditDog" enctype="multipart/form-data">
+
                 <div class="input-container">
                     <label for="name">Nome do cachorro:</label>
                     <input type="text" id="name" name="name" v-model="name" placeholder="Digite o nome do seu cachorro">
@@ -58,7 +59,8 @@
                 breed: null,
                 gender: null,
                 is_public: null,
-                img_path: null
+                img_path: null,
+                current_img: null
             }
         },
         methods: {
@@ -78,7 +80,7 @@
                         this.breed = response.data.breed
                         this.gender = response.data.gender
                         this.is_public = response.data.is_public
-                        this.img_path = response.data.img_path
+                        this.current_img = response.data.img_path
                     }
                 })
                 .catch((error) => {
@@ -98,13 +100,11 @@
                     img_path: this.img_path
                 }
 
-                // link do backend do Vue: http://localhost:3000/dogs
                 await axios.put(`${api}/dog_list/update/${dog_id}`, dogData, {
                     headers: {
                         "Content-Type": "multipart/form-data",
                         'Authorization': `Bearer ${token}`
-                    },
-                    _method: 'PUT'
+                    }
                 })
                 .then(() => {
                     alert('Atualização feita com sucesso')
