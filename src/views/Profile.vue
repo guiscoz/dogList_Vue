@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+  <div class="container">
     <div id="dog-table" >
       <h1>Bem vindo, {{ this.name }}</h1>
       <h2 v-if="dogs">Veja os cachorros já cadastrados por você</h2>
@@ -25,6 +25,9 @@
         </div>
       </div>
     </div>
+    <div class="pagination" v-if="pages > 1">
+      <button v-for="index in pages" :key="index" @click="UserData(index)" :class="{active: index == current_page}">{{index}}</button>
+    </div>
   </div>
 </template>
 
@@ -40,12 +43,14 @@
             return {
                 name: null,
                 id: null,
-                dogs: null
+                dogs: null,
+                pages: null,
+                current_page: null
             }
         },
         methods: {
-            async UserData() {
-                await axios.get(`${api}/get_user`, {
+            async UserData(page) {
+                await axios.get(`${api}/get_user?page=${page}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -54,6 +59,8 @@
                     this.name = response.data.user.name
                     this.id = response.data.user.id
                     this.dogs = response.data.dogs.data
+                    this.pages = response.data.dogs.last_page
+                    this.current_page = response.data.dogs.current_page
                 })
                 .catch((error) => {
                     console.log(error)
@@ -75,7 +82,7 @@
             }
         },
         mounted() {
-            this.UserData()
+            this.UserData(1)
         }
     }
 </script>
@@ -110,5 +117,9 @@
 
   .dog-data b {
     font-size: 20px;
+  }
+
+  .active {
+    color: red;
   }
 </style>

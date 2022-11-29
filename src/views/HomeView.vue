@@ -17,6 +17,9 @@
           </div>
         </div>
       </div>
+      <div class="pagination" v-if="pages > 1">
+        <button v-for="index in pages" :key="index" @click="getDogs(index)" :class="{active: index == current_page}">{{index}}</button>
+      </div>
     </div>
   </div>
 </template>
@@ -24,25 +27,32 @@
 <script>
 import axios from 'axios'
 import api from '@/services/api'
+/* eslint-disable */
 
 export default {
   /* eslint-disable */
   name: 'HomeView',
   data() {
     return {
-      dogs: null
+      dogs: null,
+      pages: null,
+      current_page: null
     }
   },
   methods: {
-    async getDogs() {
+    async getDogs(page) {
       // link do backend do Vue: http://localhost:3000/dogs
-      await axios.get(`${api}/dog_list`, {})
-      .then(response => {this.dogs = response.data.data})
+      await axios.get(`${api}/dog_list?page=${page}`, {})
+      .then(response => {
+        this.dogs = response.data.data
+        this.pages = response.data.last_page
+        this.current_page = response.data.current_page
+      })
       .catch(error => {console.log(error)})
     }
   },
   mounted() {
-    this.getDogs()
+    this.getDogs(1)
   }
 }
 </script>
@@ -77,5 +87,9 @@ export default {
 
   .dog-data b {
     font-size: 20px;
+  }
+
+  .active {
+    color: red;
   }
 </style>
