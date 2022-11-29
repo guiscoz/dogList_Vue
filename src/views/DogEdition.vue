@@ -6,7 +6,8 @@
             <img v-else src="@/assets/imgs/noImage.jpg" :alt="name" class="dog-picture">
         </div>
         <div id="edit_column">
-            <form id="dog-form" method="PUT" @submit="EditDog" enctype="multipart/form-data">
+            <form id="dog-form" @submit="EditDog" enctype="multipart/form-data">
+                <input type="hidden" name="_method" value="PUT">
 
                 <div class="input-container">
                     <label for="name">Nome do cachorro:</label>
@@ -101,6 +102,7 @@
                 }
 
                 await axios.put(`${api}/dog_list/update/${dog_id}`, dogData, {
+                    method: 'put',
                     headers: {
                         "Content-Type": "multipart/form-data",
                         'Authorization': `Bearer ${token}`

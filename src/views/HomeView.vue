@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-      <div class="pagination" v-if="pages > 1">
+      <div id="pagination" v-if="pages > 1">
         <button v-for="index in pages" :key="index" @click="getDogs(index)" :class="{active: index == current_page}">{{index}}</button>
       </div>
     </div>
@@ -87,6 +87,10 @@ export default {
 
   .dog-data b {
     font-size: 20px;
+  }
+
+  #pagination {
+    margin-bottom: 1%;
   }
 
   .active {

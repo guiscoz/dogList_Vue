@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div class="pagination" v-if="pages > 1">
+    <div id="pagination" v-if="pages > 1">
       <button v-for="index in pages" :key="index" @click="UserData(index)" :class="{active: index == current_page}">{{index}}</button>
     </div>
   </div>
