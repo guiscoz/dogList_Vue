@@ -157,7 +157,7 @@
   label {
     font-weight: bold;
     margin-bottom: 15px;
-    color: #222;;
+    color: #222;
     padding: 5px 10px;
   }
 
