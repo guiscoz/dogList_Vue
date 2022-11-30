@@ -101,8 +101,7 @@
                     img_path: this.img_path
                 }
 
-                await axios.put(`${api}/dog_list/update/${dog_id}`, dogData, {
-                    method: 'put',
+                await axios.post(`${api}/dog_list/update/${dog_id}?_method=PUT`, dogData, {
                     headers: {
                         "Content-Type": "multipart/form-data",
                         'Authorization': `Bearer ${token}`
