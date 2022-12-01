@@ -14,11 +14,11 @@
               <p><b>Nome:</b> {{dog.name}}</p>
               <p><b>Raça:</b> {{dog.breed}}</p>
               <p><b>Sexo:</b> {{dog.gender == "M" ? "Masculino" : "Feminino"}}</p>
-              <p><b style="font-size: 18px">{{dog.is_public == "1" ? "Público" : "Visível apenas no seu perfil"}}</b></p>
-              <div id="actions" style="display: flex; justify-content: space-between">
-                  <a :href="'/editar-cachorro/'+dog.id">Editar</a>
+              <p><b>{{dog.is_public == "1" ? "Público" : "Visível apenas no seu perfil"}}</b></p>
+              <div class="btn-group" id="actions">
+                  <a :href="'/editar-cachorro/'+dog.id" class="btn btn-primary">Editar</a>
                   <!-- <button>Editar</button> -->
-                  <button @click="DeleteDog(dog.id)">Excluir</button>
+                  <button @click="DeleteDog(dog.id)" class="btn btn-danger">Excluir</button>
               </div>
             </div>
           </div>
@@ -88,18 +88,26 @@
 </script>
 
 <style scoped>
+  #pagination {
+    margin-bottom: 1%;
+  }
+
+  .active {
+    color: red;
+  }
+
   #dog-table {
-    max-width: 1200px;
-    margin: 3% auto 0;
+      max-width: 500px;
+      margin: 3% auto 0;
   }
 
   .dog-table-row {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    height: 450px;
-    margin-bottom: 3%;
-    border: 1px solid #333;
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      height: 225px;
+      margin-bottom: 3%;
+      border: 1px solid #333;
   }
 
   .dog-table-column {
@@ -107,19 +115,69 @@
   }
 
   .dog-picture {
-    max-height: 400px;
-    max-width: 400px;
+      max-height: 100px;
+      max-width: 100px;
   }
 
   .dog-data {
-    font-size: 25px;
+    font-size: 12px;
   }
 
   .dog-data b {
-    font-size: 20px;
+    font-size: 10px;
   }
 
-  .active {
-    color: red;
+  .btn {
+    font-size: 7px;
+  }
+
+  @media only screen and (min-width: 400px) {
+    #dog-table {
+      max-width: 500px;
+    }
+
+    .dog-table-row {
+      height: 300px;
+    }
+
+    .dog-picture {
+      max-height: 200px;
+      max-width: 200px;
+    }
+
+    .dog-data {
+      font-size: 18px;
+    }
+
+    .dog-data b {
+      font-size: 15px;
+    }
+
+    .btn {
+    font-size: 15px;
+  }
+  }
+
+  @media only screen and (min-width: 750px) {
+    #dog-table {
+      max-width: 1200px;
+    }
+
+    .dog-table-row {
+      height: 450px;
+    }
+
+    .dog-picture {
+      max-height: 400px;
+      max-width: 400px;
+    }
+
+    .dog-data {
+      font-size: 25px;
+    }
+
+    .dog-data b {
+      font-size: 20px;
+    }
   }
 </style>

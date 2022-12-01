@@ -95,8 +95,9 @@ export default {
   }
 
   #dog-form {
-    max-width: 800px;
-    margin: 3% auto 0;
+    max-width: 600px;
+    margin: 6% auto 0;
+    font-size: 10px;
   }
 
   .input-container {
@@ -115,7 +116,8 @@ export default {
 
   .input-container input, select {
     padding: 5px;
-    width: 300px;
+    width: 175px;
+    height: 35px;
   }
 
   .checkbox-container {
@@ -127,5 +129,18 @@ export default {
   .checkbox-container input{
     height: 20px;
     width: 20px;
+  }
+
+  @media only screen and (min-width: 540px) {
+    #dog-form {
+      max-width: 800px;
+      margin: 3% auto 0;
+      font-size: 15px;
+    }
+
+    .input-container input, select {
+      width: 300px;
+      height: 40px;
+    }
   }
 </style>

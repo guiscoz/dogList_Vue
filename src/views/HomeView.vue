@@ -58,18 +58,26 @@ export default {
 </script>
 
 <style scoped>
+  #pagination {
+    margin-bottom: 1%;
+  }
+
+  .active {
+    color: red;
+  }
+
   #dog-table {
-    max-width: 1200px;
-    margin: 3% auto 0;
+      max-width: 500px;
+      margin: 3% auto 0;
   }
 
   .dog-table-row {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    height: 450px;
-    margin-bottom: 3%;
-    border: 1px solid #333;
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      height: 125px;
+      margin-bottom: 3%;
+      border: 1px solid #333;
   }
 
   .dog-table-column {
@@ -77,23 +85,61 @@ export default {
   }
 
   .dog-picture {
-    max-height: 400px;
-    max-width: 400px;
+      max-height: 100px;
+      max-width: 100px;
   }
 
   .dog-data {
-    font-size: 25px;
+    font-size: 12px;
   }
 
   .dog-data b {
-    font-size: 20px;
+    font-size: 10px;
   }
 
-  #pagination {
-    margin-bottom: 1%;
+  @media only screen and (min-width: 400px) {
+    #dog-table {
+      max-width: 500px;
+    }
+
+    .dog-table-row {
+      height: 225px;
+    }
+
+    .dog-picture {
+      max-height: 200px;
+      max-width: 200px;
+    }
+
+    .dog-data {
+      font-size: 18px;
+    }
+
+    .dog-data b {
+      font-size: 15px;
+    }
   }
 
-  .active {
-    color: red;
+  @media only screen and (min-width: 750px) {
+    #dog-table {
+      max-width: 1200px;
+    }
+
+    .dog-table-row {
+      height: 450px;
+    }
+
+    .dog-picture {
+      max-height: 400px;
+      max-width: 400px;
+    }
+
+    .dog-data {
+      font-size: 25px;
+    }
+
+    .dog-data b {
+      font-size: 20px;
+    }
   }
 </style>

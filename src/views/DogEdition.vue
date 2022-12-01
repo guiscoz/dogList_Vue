@@ -138,13 +138,14 @@
   }
 
   #image-column img {
-      max-width: 450px;
+      max-width: 250px;
       margin-top: 1%;
   }
 
   #dog-form {
     max-width: 500px;
-    margin: 3% auto 0;
+    margin: 6% auto 0;
+    font-size: 10px;
   }
 
   .input-container {
@@ -163,7 +164,8 @@
 
   .input-container input, select {
     padding: 5px;
-    width: 300px;
+    width: 175px;
+    height: 35px;
   }
 
   .checkbox-container {
@@ -175,5 +177,22 @@
   .checkbox-container input{
     height: 20px;
     width: 20px;
+  }
+
+  @media only screen and (min-width: 540px) {
+    #dog-form {
+      max-width: 800px;
+      margin: 3% auto 0;
+      font-size: 15px;
+    }
+
+      #image-column img {
+        max-width: 450px;
+    }
+
+      .input-container input, select {
+        width: 300px;
+        height: 40px;
+    }
   }
 </style>
