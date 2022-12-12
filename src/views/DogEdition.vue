@@ -5,6 +5,9 @@
             <img v-if="this.current_img" :src="`http://127.0.0.1:8000/storage/${this.current_img}`" :alt="name" id="dog-picture">
             <img v-else src="@/assets/imgs/noImage.jpg" :alt="name" class="dog-picture">
         </div>
+        <div v-if="this.current_img" id="erase-image">
+            <button @click="DeleteImage(dog_id)" >Apagar imagem</button>
+        </div>
         <div id="edit_column">
             <form id="dog-form" @submit="EditDog" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PUT">
@@ -116,6 +119,25 @@
                     console.log(dogData)
                 })
             },
+            async DeleteImage() {
+                const noImage = {
+                    img_path: null
+                }
+
+                await axios.post(`${api}/dog_list/delete_image/${dog_id}?_method=PUT`, noImage, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        'Authorization': `Bearer ${token}`
+                    },
+                })
+                .then(() => {
+                    alert('Imagem removida com sucesso')
+                    window.location.reload();
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+            },
             newFile(event) {
                 this.img_path = event.target.files[0]
             }
@@ -137,6 +159,10 @@
       justify-content: space-between;
   }
 
+  #erase-image {
+      margin-top: 2%;
+  }
+
   #image-column img {
       max-width: 250px;
       margin-top: 1%;
@@ -152,7 +178,7 @@
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 
   label {
@@ -182,7 +208,7 @@
   @media only screen and (min-width: 540px) {
     #dog-form {
       max-width: 800px;
-      margin: 3% auto 0;
+      margin: 6% auto 0;
       font-size: 15px;
     }
 
@@ -192,7 +218,7 @@
 
       .input-container input, select {
         width: 300px;
-        height: 40px;
+        height: 45px;
     }
   }
 </style>

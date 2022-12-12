@@ -134,13 +134,13 @@ export default {
   @media only screen and (min-width: 540px) {
     #dog-form {
       max-width: 800px;
-      margin: 3% auto 0;
+      margin: 6% auto 0;
       font-size: 15px;
     }
 
     .input-container input, select {
       width: 300px;
-      height: 40px;
+      height: 45px;
     }
   }
 </style>
