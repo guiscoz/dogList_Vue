@@ -2,7 +2,7 @@
     <div class="dog-edit">
         <h1>Edição de cachorro:</h1>
         <div id="image-column">
-            <img v-if="this.current_img" :src="`http://127.0.0.1:8000/storage/${this.current_img}`" :alt="name" id="dog-picture">
+            <img v-if="this.current_img" :src="`${image_api}/storage/${this.current_img}`" :alt="name" id="dog-picture">
             <img v-else src="@/assets/imgs/noImage.jpg" :alt="name" class="dog-picture">
         </div>
         <div v-if="this.current_img" id="erase-image">
@@ -49,8 +49,8 @@
 </template>
 
 <script>
-    import axios from 'axios'
     import api from '@/services/api'
+import axios from 'axios'
     const token = document.cookie.split('=')[1]
     const dog_id = window.location.href.split('/').pop()
 
@@ -64,7 +64,8 @@
                 gender: null,
                 is_public: null,
                 img_path: null,
-                current_img: null
+                current_img: null,
+                image_api: api.slice(0, -3)
             }
         },
         methods: {
