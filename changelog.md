@@ -46,6 +46,6 @@ Agora é possível excluir a imagem atrelado a seu cachorro na página de ediç�
 
 O arquivo README.md foi alterado para poder descrever o projeto para qualquer um que visualizar seu repositório.
 
-# 12/12/2025
+# 12/12/2024
 
 Agora existe o arquivo changelog.md para registrar cada alteração feita no projeto. Também há um arquivo separado somente para definir o valor do token, ele foi gerado porque o código a variável pegar o JWT precisou ser alterado para receber o valor correto. Como será usado em várias views, sua definição foi movida para um novo arquivo e ser importado aonde for preciso.
