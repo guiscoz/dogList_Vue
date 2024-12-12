@@ -50,8 +50,8 @@
 
 <script>
     import api from '@/services/api'
-import axios from 'axios'
-    const token = document.cookie.split('=')[1]
+    import token from '@/services/token'
+    import axios from 'axios'
     const dog_id = window.location.href.split('/').pop()
 
     export default {
@@ -71,7 +71,7 @@ import axios from 'axios'
         methods: {
             /* eslint-disable */
             async DogData() {
-                await axios.get(`${api}/dog_list/current_dog/${dog_id}`, {
+                await axios.get(`${api}/dogs/current_dog/${dog_id}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -105,7 +105,7 @@ import axios from 'axios'
                     img_path: this.img_path
                 }
 
-                await axios.post(`${api}/dog_list/update/${dog_id}?_method=PUT`, dogData, {
+                await axios.post(`${api}/dogs/update/${dog_id}?_method=PUT`, dogData, {
                     headers: {
                         "Content-Type": "multipart/form-data",
                         'Authorization': `Bearer ${token}`
@@ -125,7 +125,7 @@ import axios from 'axios'
                     img_path: null
                 }
 
-                await axios.post(`${api}/dog_list/delete_image/${dog_id}?_method=PUT`, noImage, {
+                await axios.post(`${api}/dogs/delete_image/${dog_id}?_method=PUT`, noImage, {
                     headers: {
                         "Content-Type": "multipart/form-data",
                         'Authorization': `Bearer ${token}`

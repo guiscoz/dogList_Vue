@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     async getDogs(page) {
-      await axios.get(`${api}/dog_list?page=${page}`, {})
+      await axios.get(`${api}/dogs?page=${page}`, {})
       .then(response => {
         this.dogs = response.data.data
         this.pages = response.data.last_page

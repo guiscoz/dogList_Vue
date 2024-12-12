@@ -38,55 +38,54 @@
 </template>
 
 <script>
-import axios from 'axios'
-import api from '@/services/api'
-const token = document.cookie.split('=')[1]
+  import api from '@/services/api'
+  import token from '@/services/token'
+  import axios from 'axios'
 
-export default {
-  name: "DogRegister",
-  data() {
-    return {
-      name: null,
-      breed: null,
-      gender: null,
-      img_path: null,
-      is_public: null
-    }
-  },
-  methods: {
-    async registerDog(e) {
-      e.preventDefault()
-
-      const dogData = {
-        name: this.name,
-        breed: this.breed,
-        gender: this.gender,
-        is_public: this.is_public ? 1 : 0,
-        img_path: this.img_path
+  export default {
+    name: "DogRegister",
+    data() {
+      return {
+        name: null,
+        breed: null,
+        gender: null,
+        img_path: null,
+        is_public: null
       }
-
-      // link do backend do Vue: http://localhost:3000/dogs
-      await axios.post(`${api}/dog_list/store`, dogData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          'Authorization': `Bearer ${token}`
-        },
-      })
-      .then(() => {
-        alert('Cadastro feito com sucesso')
-        window.location.reload();
-      })
-      .catch((error) => {
-          console.log(error)
-      })
-
     },
+    methods: {
+      async registerDog(e) {
+        e.preventDefault()
 
-    newFile(event) {
-      this.img_path = event.target.files[0]
+        const dogData = {
+          name: this.name,
+          breed: this.breed,
+          gender: this.gender,
+          is_public: this.is_public ? 1 : 0,
+          img_path: this.img_path
+        }
+
+        await axios.post(`${api}/dogs/store`, dogData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            'Authorization': `Bearer ${token}`
+          },
+        })
+        .then(() => {
+          alert('Cadastro feito com sucesso')
+          window.location.reload();
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+
+      },
+
+      newFile(event) {
+        this.img_path = event.target.files[0]
+      }
     }
   }
-}
 </script>
 
 <style scoped>
