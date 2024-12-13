@@ -1,0 +1,28 @@
+#pagination {
+    margin-bottom: 1%;
+}
+
+.active {
+    color: red;
+}
+
+#home-table {
+    max-width: 500px;
+    margin: 3% auto 0;
+}
+
+#home-table h1 {
+  padding-bottom: 15px;
+}
+
+@media only screen and (min-width: 400px) {
+  #home-table {
+    max-width: 500px;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  #home-table {
+    max-width: 1200px;
+  }
+}

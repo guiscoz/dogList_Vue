@@ -1,11 +1,6 @@
 <template>
-    <form method="POST" @submit="Register">
-        <h1 class="h3 mb-3 fw-normal">Faça seu cadastro</h1>
-
-        <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" v-model="name">
-            <label for="floatingInput">Nome de usuário</label>
-        </div>
+    <form method="POST" @submit="Login">
+        <h1 class="h3 mb-3 fw-normal">Faça seu login</h1>
 
         <div class="form-floating">
             <input type="email" class="form-control" id="floatingInput" v-model="email">
@@ -22,36 +17,36 @@
 </template>
 
 <script>
-    import axios from 'axios'
+    import './AuthForm.css'
     import api from '@/services/api'
+    import axios from 'axios'
 
     export default {
         /* eslint-disable */
-        name: "Register",
+        name: "Login",
         data() {
             return {
-                name: null,
                 email: null,
                 password: null
             }
         },
         methods: {
-            async Register(e) {
+            async Login(e) {
                 e.preventDefault()
 
-                const RegisterData = {
-                    name: this.name,
+                const loginData = {
                     email: this.email,
                     password: this.password
                 }
 
-                axios.post(`${api}/register`, RegisterData)
+                axios.post(`${api}/login`, loginData)
                 .then(response => {
                     let token = response.data.token
                     let date = new Date()
                     let expires = date.setDate(date.getDate() + 1)
 
                     document.cookie = `user_token=${token};expires=${expires}`
+
                     this.$router.push('/perfil')
                 })
                 .catch((error) => {
@@ -61,14 +56,3 @@
         }
     }
 </script>
-
-<style scoped>
-    form {
-        width: 250px;
-        margin: 15% auto 0;
-    }
-
-    .form-floating {
-        margin-bottom: 5%;
-    }
-</style>

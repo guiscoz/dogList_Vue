@@ -49,13 +49,17 @@
 </template>
 
 <script>
+    import "./PageForm.css"
     import api from '@/services/api'
-    import token from '@/services/token'
     import axios from 'axios'
+    // import DogForm from '@/components/dogs/DogForm.vue'
+    import token from '@/services/token'
+
     const dog_id = window.location.href.split('/').pop()
 
     export default {
         name: "DogEdition",
+        // components: { DogForm },
         data() {
             return {
                 id: dog_id,
@@ -148,78 +152,3 @@
         }
     }
 </script>
-
-<style scoped>
-  h1 {
-    margin-top: 3%;
-  }
-
-  #dog-edit {
-      max-width: 1000px;
-      display: flex;
-      justify-content: space-between;
-  }
-
-  #erase-image {
-      margin-top: 2%;
-  }
-
-  #image-column img {
-      max-width: 250px;
-      margin-top: 1%;
-  }
-
-  #dog-form {
-    max-width: 500px;
-    margin: 6% auto 0;
-    font-size: 10px;
-  }
-
-  .input-container {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    margin-bottom: 25px;
-  }
-
-  label {
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #222;
-    padding: 5px 10px;
-  }
-
-  .input-container input, select {
-    padding: 5px;
-    width: 175px;
-    height: 35px;
-  }
-
-  .checkbox-container {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 15px;
-  }
-
-  .checkbox-container input{
-    height: 20px;
-    width: 20px;
-  }
-
-  @media only screen and (min-width: 540px) {
-    #dog-form {
-      max-width: 800px;
-      margin: 6% auto 0;
-      font-size: 15px;
-    }
-
-      #image-column img {
-        max-width: 450px;
-    }
-
-      .input-container input, select {
-        width: 300px;
-        height: 45px;
-    }
-  }
-</style>

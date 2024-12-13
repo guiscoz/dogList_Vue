@@ -38,12 +38,15 @@
 </template>
 
 <script>
+  import "./PageForm.css"
   import api from '@/services/api'
-  import token from '@/services/token'
   import axios from 'axios'
+  // import DogForm from '@/components/dogs/DogForm.vue'
+  import token from '@/services/token'
 
   export default {
     name: "DogRegister",
+    // components: { DogForm },
     data() {
       return {
         name: null,
@@ -87,59 +90,3 @@
     }
   }
 </script>
-
-<style scoped>
-  h1 {
-    margin-top: 3%;
-  }
-
-  #dog-form {
-    max-width: 600px;
-    margin: 6% auto 0;
-    font-size: 10px;
-  }
-
-  .input-container {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    margin-bottom: 20px;
-  }
-
-  label {
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #222;;
-    padding: 5px 10px;
-  }
-
-  .input-container input, select {
-    padding: 5px;
-    width: 175px;
-    height: 35px;
-  }
-
-  .checkbox-container {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 15px;
-  }
-
-  .checkbox-container input{
-    height: 20px;
-    width: 20px;
-  }
-
-  @media only screen and (min-width: 540px) {
-    #dog-form {
-      max-width: 800px;
-      margin: 6% auto 0;
-      font-size: 15px;
-    }
-
-    .input-container input, select {
-      width: 300px;
-      height: 45px;
-    }
-  }
-</style>

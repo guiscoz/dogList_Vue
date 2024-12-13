@@ -17,9 +17,10 @@
 </template>
 
 <script>
-    import axios from 'axios'
+    import './Navbar.css'
     import api from '@/services/api'
-    let token = document.cookie.split('=')[1]
+    import axios from 'axios'
+    import token from '@/services/token'
 
     export default {
         /* eslint-disable */
@@ -31,13 +32,14 @@
         },
         methods: {
             async Logout(e) {
+                // console.log(token)
                 await axios.get(`${api}/logout`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
                 })
                 .then(response => {
-                    document.cookie = `${document.cookie};max-age=0`
+                    document.cookie = "user_token=; max-age=0; path=/";
                     this.logged = false
                     this.$router.push('/')
                 })
@@ -49,7 +51,7 @@
                 if (document.cookie.indexOf('user_token') == -1) {
                     this.logged = false
                 } else {
-                    token = document.cookie.split('=')[1]
+                    // token = document.cookie.split('=')[1]
                     this.logged = true
                 }
             }
@@ -64,65 +66,3 @@
         }
     }
 </script>
-
-<style scoped>
-    nav {
-        padding: 15px 25px;
-        font-size: 10px;
-        display: block;
-        align-items: center;
-        border-bottom: 2px solid #333;
-    }
-
-    nav a {
-        font-weight: bold;
-        margin-right: 15px;
-        text-decoration: none;
-        color: #333;
-    }
-
-    nav a:hover {
-        color: green;
-    }
-
-    nav a:active {
-        color: greenyellow;
-    }
-
-    #logo {
-        margin: auto;
-        margin-left: 0;
-    }
-
-    #logo img {
-        max-width: 100%;
-    }
-
-    .condicional-links {
-        margin-top: 15px;
-    }
-
-    @media only screen and (min-width: 540px) {
-        nav {
-            padding: 15px 75px;
-            font-size: 12px;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        nav a {
-            margin-right: 25px;
-        }
-
-        .condicional-links {
-            margin-top: 0;
-        }
-    }
-
-    @media only screen and (min-width: 775px) {
-        nav {
-            padding: 15px 150px;
-            font-size: 15px;
-        }
-    }
-</style>

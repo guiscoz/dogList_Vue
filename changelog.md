@@ -57,3 +57,11 @@ O arquivo README.md foi alterado para poder descrever o projeto para qualquer um
 ### 12/12
 
 Agora existe o arquivo changelog.md para registrar cada alteração feita no projeto. Também há um arquivo separado somente para definir o valor do token, ele foi gerado porque o código a variável pegar o JWT precisou ser alterado para receber o valor correto. Como será usado em várias views, sua definição foi movida para um novo arquivo e ser importado aonde for preciso.
+
+### 13/12
+
+Na pasta de views foi criada a pasta dog para armazenar a view de criação e edição de cachorro, também surgiu as authentication para receber a view de login, cadastro e perfil de usuário. Somente a view da página inicial (Home.vue) permaneceu no lugar. Além disse, alguns de seus arquivos foram renomeados de DogRegister para Create, DogEdition para Edit e HomeView para Home.
+Surgiu um novo componente chamado DogCard que servirá para carregar dados de cada cachorro, ele aparece tanto na página inicial quanto a de perfil.
+Antes os códigos de estilização estavam no mesmo arquivo do componente, mas agora foram criado arquivos css separados.
+Houve a exclusão da pasta db e a de dogs dentro dos assets porque a função deles eram auxiliar a simulação do backend com o json-server, algo que não será mais usado no projeto.
+Um problema que surgiu é durante o login e cadastro de um novo usuário. Ao ser redirecionado à página de perfil após uma dessas ações, a variável que deveria receber o valor do token armazenado no cookie é dada como indefinida. A única solução encontrar é dar refresh na página de perfil 200 milisegundos depois da autenticação. Este é um problema que aparece somente depois de logar ou se cadastrar.
