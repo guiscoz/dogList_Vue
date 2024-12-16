@@ -28,13 +28,13 @@ const routes = [
     path: '/cadastro-cachorro',
     name: 'dog-register',
     beforeEnter: Guard.auth,
-    component: () => import(/* webpackChunkName: "about" */ '../views/dogs/Create.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/dogs/DogCreate.vue')
   },
   {
     path: '/editar-cachorro/:id',
     name: 'dog-edit',
     beforeEnter: Guard.auth,
-    component: () => import(/* webpackChunkName: "about" */ '../views/dogs/Edit.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/dogs/DogEdit.vue')
   }
 ]
 
