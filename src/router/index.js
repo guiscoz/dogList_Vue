@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import Guard from '../services/middleware';
+import Guard from '../services/middleware'
 
 const routes = [
   {

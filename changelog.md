@@ -65,3 +65,7 @@ Surgiu um novo componente chamado DogCard que servirá para carregar dados de ca
 Antes os códigos de estilização estavam no mesmo arquivo do componente, mas agora foram criado arquivos css separados.
 Houve a exclusão da pasta db e a de dogs dentro dos assets porque a função deles eram auxiliar a simulação do backend com o json-server, algo que não será mais usado no projeto.
 Um problema que surgiu é durante o login e cadastro de um novo usuário. Ao ser redirecionado à página de perfil após uma dessas ações, a variável que deveria receber o valor do token armazenado no cookie é dada como indefinida. A única solução encontrar é dar refresh na página de perfil 200 milisegundos depois da autenticação. Este é um problema que aparece somente depois de logar ou se cadastrar.
+
+### 16/12
+
+O arquivo 'token.js' foi renomeado para 'getToken.js' e nele há uma função que procura o cookie e espera que a variável token seja definida. Dessa forma resolveu aquele problema no redirecionamento à página de perfil após o login. Esta função passou a retorna uma Promise que espera receber um valor em vez de retornar uma simples string, por isso fazer um pequeno ajuste nos componentes que usam o JWT para as requisições de API. Em vez de só importar o token como era feito anteriormente, foi necessário criar uma variável para receber o getToken com um await na frente.

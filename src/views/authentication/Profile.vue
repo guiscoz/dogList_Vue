@@ -17,8 +17,8 @@
   import './Profile.css'
   import api from '@/services/api'
   import axios from 'axios'
-  import token from '@/services/token'
-  import DogCard from '@/components/dogs/DogCard.vue';
+  import getToken from '@/services/getToken'
+  import DogCard from '@/components/dogs/DogCard.vue'
 
   export default {
     /* eslint-disable */
@@ -36,42 +36,24 @@
     },
     methods: {
       async UserData(page) {
-        setTimeout(() => {
-          if (token === undefined) {
-            window.location.reload();
-          }
-        }, 200);
+        const token = await getToken()
 
-        await axios.get(`${api}/user?page=${page}`, {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-        })
-        .then(response => {
-            this.name = response.data.user.name
-            this.id = response.data.user.id
-            this.dogs = response.data.dogs.data
-            this.pages = response.data.dogs.last_page
-            this.current_page = response.data.dogs.current_page
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-      },
-      async DeleteDog(id) {
-        await axios.delete(`${api}/dogs/delete/${id}`, {
+        try {
+          const response = await axios.get(`${api}/user?page=${page}`, {
             headers: {
-            'Authorization': `Bearer ${token}`
-            },
-        })
-        .then(() => {
-            alert('Remoção feita com sucesso')
-            window.location.reload();
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-      }
+              'Authorization': `Bearer ${token}`
+            }
+          })
+
+          this.name = response.data.user.name
+          this.id = response.data.user.id
+          this.dogs = response.data.dogs.data
+          this.pages = response.data.dogs.last_page
+          this.current_page = response.data.dogs.current_page
+        } catch (error) {
+          console.error("Erro ao buscar dados do usuário:", error)
+        }
+      },
     },
     mounted() {
         this.UserData(1)

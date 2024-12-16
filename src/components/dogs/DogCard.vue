@@ -23,7 +23,7 @@
   import './DogCard.css'
   import api from '@/services/api'
   import axios from 'axios'
-  import token from '@/services/token'
+  import getToken from '@/services/getToken'
 
   export default {
     /* eslint-disable */
@@ -45,6 +45,8 @@
     },
     methods: {
         async DeleteDog(id) {
+            const token = await getToken()
+
             await axios.delete(`${api}/dogs/delete/${id}`, {
                 headers: {
                 'Authorization': `Bearer ${token}`
@@ -52,7 +54,7 @@
             })
             .then(() => {
                 alert('Remoção feita com sucesso')
-                window.location.reload();
+                window.location.reload()
             })
             .catch((error) => {
                 console.log(error)

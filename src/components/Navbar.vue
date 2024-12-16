@@ -20,7 +20,7 @@
     import './Navbar.css'
     import api from '@/services/api'
     import axios from 'axios'
-    import token from '@/services/token'
+    import getToken from '@/services/getToken'
 
     export default {
         /* eslint-disable */
@@ -32,7 +32,8 @@
         },
         methods: {
             async Logout(e) {
-                // console.log(token)
+                const token = await getToken()
+
                 await axios.get(`${api}/logout`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -48,12 +49,7 @@
                 })
             },
             CheckLogin() {
-                if (document.cookie.indexOf('user_token') == -1) {
-                    this.logged = false
-                } else {
-                    // token = document.cookie.split('=')[1]
-                    this.logged = true
-                }
+                document.cookie.indexOf('user_token') == -1 ? this.logged = false : this.logged = true
             }
         },
         mounted() {

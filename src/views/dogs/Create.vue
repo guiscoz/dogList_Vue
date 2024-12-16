@@ -42,7 +42,7 @@
   import api from '@/services/api'
   import axios from 'axios'
   // import DogForm from '@/components/dogs/DogForm.vue'
-  import token from '@/services/token'
+  import getToken from '@/services/getToken'
 
   export default {
     name: "DogRegister",
@@ -59,6 +59,7 @@
     methods: {
       async registerDog(e) {
         e.preventDefault()
+        const token = await getToken()
 
         const dogData = {
           name: this.name,
@@ -76,7 +77,7 @@
         })
         .then(() => {
           alert('Cadastro feito com sucesso')
-          window.location.reload();
+          window.location.reload()
         })
         .catch((error) => {
             console.log(error)

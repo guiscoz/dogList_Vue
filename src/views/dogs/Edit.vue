@@ -52,14 +52,12 @@
     import "./PageForm.css"
     import api from '@/services/api'
     import axios from 'axios'
-    // import DogForm from '@/components/dogs/DogForm.vue'
-    import token from '@/services/token'
+    import getToken from '@/services/getToken'
 
     const dog_id = window.location.href.split('/').pop()
 
     export default {
         name: "DogEdition",
-        // components: { DogForm },
         data() {
             return {
                 id: dog_id,
@@ -69,15 +67,19 @@
                 is_public: null,
                 img_path: null,
                 current_img: null,
-                image_api: api.slice(0, -3)
+                image_api: api.slice(0, -3),
+                token: null 
             }
         },
         methods: {
             /* eslint-disable */
+            async fetchToken() {
+                this.token = await getToken()
+            },
             async DogData() {
                 await axios.get(`${api}/dogs/current_dog/${dog_id}`, {
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${this.token}`
                 }
                 })
                 .then(response => {
@@ -112,12 +114,12 @@
                 await axios.post(`${api}/dogs/update/${dog_id}?_method=PUT`, dogData, {
                     headers: {
                         "Content-Type": "multipart/form-data",
-                        'Authorization': `Bearer ${token}`
+                        'Authorization': `Bearer ${this.token}`
                     }
                 })
                 .then(() => {
                     alert('Atualização feita com sucesso')
-                    window.location.reload();
+                    window.location.reload()
                 })
                 .catch((error) => {
                     console.log(error)
@@ -132,12 +134,12 @@
                 await axios.post(`${api}/dogs/delete_image/${dog_id}?_method=PUT`, noImage, {
                     headers: {
                         "Content-Type": "multipart/form-data",
-                        'Authorization': `Bearer ${token}`
+                        'Authorization': `Bearer ${this.token}`
                     },
                 })
                 .then(() => {
                     alert('Imagem removida com sucesso')
-                    window.location.reload();
+                    window.location.reload()
                 })
                 .catch((error) => {
                     console.log(error)
@@ -147,7 +149,8 @@
                 this.img_path = event.target.files[0]
             }
         },
-        mounted() {
+        async mounted() {
+            await this.fetchToken()
             this.DogData()
         }
     }
