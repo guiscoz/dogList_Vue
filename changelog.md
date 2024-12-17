@@ -69,3 +69,8 @@ Um problema que surgiu é durante o login e cadastro de um novo usuário. Ao ser
 ### 16/12
 
 O arquivo 'token.js' foi renomeado para 'getToken.js' e nele há uma função que procura o cookie e espera que a variável token seja definida. Dessa forma resolveu aquele problema no redirecionamento à página de perfil após o login. Esta função passou a retorna uma Promise que espera receber um valor em vez de retornar uma simples string, por isso fazer um pequeno ajuste nos componentes que usam o JWT para as requisições de API. Em vez de só importar o token como era feito anteriormente, foi necessário criar uma variável para receber o getToken com um await na frente.
+Também foi criado o componente DogForm que está sendo usando tanto pelo DogCreate quanto pelo o DogEdit porque sua estrutura é identica uma a outra.
+
+### 17/12
+
+Commit de uma mudança no changelog que não foi feito no dia anterior.
