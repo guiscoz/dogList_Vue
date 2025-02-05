@@ -31,7 +31,6 @@
             dogs: null,
             pages: null,
             current_page: null,
-            image_api: api.slice(0, -3),
         }
     },
     methods: {

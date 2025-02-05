@@ -74,3 +74,11 @@ Também foi criado o componente DogForm que está sendo usando tanto pelo DogCre
 ### 17/12
 
 Commit de uma mudança no changelog que não foi feito no dia anterior.
+
+## 2025
+
+Neste ano foi adiciona mais features e alguns ajustes também.
+
+## 05/02
+
+Foi criado um arquivo de docker-compose para possibilitar a execução do projeto em um ambiente Docker. O mesmo foi feito no repositório do backend. No componente DogCard foi criada uma função para receber a url da imagem do cachorro devido a um problema encontrado durante a execução do Docker.

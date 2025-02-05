@@ -1,7 +1,7 @@
 <template>
     <div id="dog-table-row">
         <div class="dog-table-column">
-            <img v-if="dog.img_path" :src="`${image_api}/storage/${dog.img_path}`" :alt="dog.name" class="dog-picture">
+            <img v-if="dog.img_path" :src="`${getImageUrl(dog.img_path)}`" :alt="dog.name" class="dog-picture">
             <img v-else src="@/assets/imgs/noImage.jpg" :alt="dog.name" class="dog-picture">
         </div>
         <div class="dog-table-column">
@@ -38,11 +38,6 @@
             default: false
         },
     },
-    data() {
-        return {
-            image_api: api.slice(0, -3),
-        }
-    },
     methods: {
         async DeleteDog(id) {
             const token = await getToken()
@@ -59,6 +54,11 @@
             .catch((error) => {
                 console.log(error)
             })
+        },
+        getImageUrl(imgPath) {
+            const baseUrl = api.replace('/api', '/')
+            console.log(baseUrl)
+            return `${baseUrl}storage/${imgPath}`
         }
     },
   }
